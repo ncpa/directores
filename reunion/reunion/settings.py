@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'directores',
+    'register',
 ]
 
 MIDDLEWARE = [
@@ -104,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -119,3 +121,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Media config
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#configuracion de email gratuito
+#EMAIL_HOST = 'smtp.mailtrap.io'
+#EMAIL_HOST_USER = 'b2118dbd35a3ec'
+#EMAIL_HOST_PASSWORD = '23e74844a8344e'
+#EMAIL_PORT = '2525'
+
+#configuracion de email en gmail
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'reuniondirectores@gmail.com'
+EMAIL_HOST_PASSWORD = 'C0n3ct@r53'
+EMAIL_PORT = '587'
