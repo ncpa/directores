@@ -1,5 +1,6 @@
 from django import forms
 
+
 class RegistroForm(forms.Form):
     nombre = forms.CharField(label="Nombre", required=True, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder':'Ingrese su nombre'}
@@ -21,9 +22,6 @@ class RegistroForm(forms.Form):
     ), min_length=3, max_length=200)
     siglas = forms.CharField(label="Siglas de Grado", required=True, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder':'Ingrese las siglas de su grado académico'}
-    ))
-    claveUt =forms.IntegerField(label="Universidad de Procedencia", required=True, widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder':'Seleccione la universidad de procedencia'}
     ))
     puesto = forms.CharField(label="Puesto", required=True, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder':'Ingrese su puesto'}

@@ -25,7 +25,7 @@ class Director(models.Model):
     telefono = models.CharField(max_length=25,verbose_name = "Teléfono",null=False,blank=False)
     grado = models.TextField(max_length=200,verbose_name = "Grado",null=False,blank=False)
     siglas = models.TextField(max_length=10,verbose_name = "Siglas de Grado",null=False,blank=False)
-    claveUt = models.ManyToManyField(Ut, verbose_name="Clave Ut")
+    claveUt = models.ForeignKey(Ut, on_delete=models.CASCADE)
     puesto = models.TextField(max_length=200,verbose_name = "Puesto",null=False,blank=False)
     status = models.BooleanField(verbose_name = "Asistencia", null=False)
     created = models.DateField(auto_now_add=True, verbose_name="Fecha de creación")
