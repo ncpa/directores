@@ -17,7 +17,7 @@ def register(request):
         register_form = RegistroForm(data=request.POST)
         print(register_form.is_valid())
         if register_form.is_valid():
-            
+
             nombre = request.POST.get("nombre",'')
             apPat = request.POST.get("apPat",'')
             apMat = request.POST.get("apMat",'')
@@ -33,7 +33,7 @@ def register(request):
             obj.nombre = nombre
             obj.apPat = apPat
             obj.apMat = apMat
-            obj.email = email
+            obj.correo = email
             obj.telefono = telefono
             obj.grado = grado
             obj.siglas = siglas
@@ -44,24 +44,10 @@ def register(request):
             # hasta aqui
             obj.puesto = puesto
             obj.save()
-            #uts = Ut.objects.filter(claveUt__in=claveUt)
-            #instance = Director.objects.create(claveUt=claveUt)
-
-            #instance.claveUt.set(uts)
-
-
-            #suponemos que todo ok redireccinamos y enviamos correo
-
-            #email = EmailMessage(
-            #    "Registro a la Reunión Naciona de Directores de TIC, Morelia 2018", 
-            #    "De {} <{}>\n\nEscribió:\n\n{}".format(nombre + " " +apPat +" "+ apMat, email, "Confirmación de regisro"),
-            #    "no-contestar@inbox.gmail.com",
-            #    [email],
-            #    reply_to=[email]
-            #)
+            
             subject, from_email = 'Registro a la Reunión Naciona de Directores de TIC, Morelia 2018', 'reuniondirectores@gmail.com'
             text_content = ''
-            html_content = "<p><p><b>¡Bienvenido!</b></p><p></p><p>Tu registro como asistente a la Reunión Nacional de Directores de Tecnologías de la Información y Comunicación de las Universidades Tecnológicas, a realizarse del 10 al 12 de octubre del 2018 ha sido correcto.&nbsp;</p><p></p><p>La recepción y registro de asistencia se llevará a cabo en el día 10 de octubre de 8:30 a 9:30 en las instalaciones del Hotel Best Western Plus, hotel sede de nuestro evento.</p><p></p><b><p align='center'>¡La ciudad de Morelia te espera!</p></b><p align='center'></p><p>Atentamente</p><p><b>MISD. Graciela I. Martínez Avila</b><br> Directora de Carrera de Tecnologías de la Información<br>y Comunicación de la Universidad Tecnológica de Morelia</p><p>443 110 59 85</p>"
+            html_content = "<p><p><b>¡Bienvenido {}!</b></p><p></p><p>Tu registro como asistente a la Reunión Nacional de Directores de Tecnologías de la Información y Comunicación de las Universidades Tecnológicas, a realizarse del 10 al 12 de octubre del 2018 ha sido correcto.&nbsp;</p><p></p><p>La recepción y registro de asistencia se llevará a cabo en el día 10 de octubre de 8:30 a 9:30 en las instalaciones del Hotel Best Western Plus, hotel sede de nuestro evento.</p><p></p><b><p align='center'>¡La ciudad de Morelia te espera!</p></b><p align='center'></p><p>Atentamente</p><p><b>MISD. Graciela I. Martínez Avila</b><br> Directora de Carrera de Tecnologías de la Información<br>y Comunicación de la Universidad Tecnológica de Morelia</p><p>443 110 59 85</p>".format(nombre + " " +apPat +" "+ apMat)
             try:
                 email = EmailMultiAlternatives(subject, text_content, from_email, [email])
                 email.attach_alternative(html_content, "text/html")
